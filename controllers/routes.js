@@ -120,7 +120,7 @@ router.get('/chat/email', (req, res) => {
 });
 
 // ----------------------------
-// Admin Routes (with Authentication & Error Handling)
+// Admin Routes (with Authentication, Error Handling, & Search Functionality)
 // ----------------------------
 
 // Admin Login Page
@@ -144,11 +144,15 @@ router.post('/admin/login', (req, res) => {
   }
 });
 
-// Admin Panel (Applications Only)
+// Admin Panel (Display Complete Application Details with Search)
 router.get('/admin', isAdmin, async (req, res) => {
   try {
-    const applications = await Application.find({});
-    res.render('admin', { applications });
+    let query = {};
+    if (req.query.search) {
+      query.email = { $regex: req.query.search, $options: 'i' };
+    }
+    const applications = await Application.find(query);
+    res.render('admin', { applications, search: req.query.search || "" });
   } catch (error) {
     console.error("Error loading admin panel:", error);
     res.status(500).send("Error loading admin panel.");

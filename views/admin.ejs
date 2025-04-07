@@ -8,6 +8,13 @@
 <body>
   <h1>Admin Panel</h1>
   <a class="logout" href="/admin/logout">Logout</a>
+  
+  <!-- Search Form -->
+  <form class="search-form" method="GET" action="/admin">
+    <input type="text" name="search" placeholder="Search by email" value="<%= search %>" />
+    <button type="submit">Search</button>
+  </form>
+  
   <section class="admin-section">
     <h2>Applications</h2>
     <table>
@@ -15,7 +22,16 @@
         <tr>
           <th>Email</th>
           <th>Full Name</th>
-          <th>Status &amp; Admin Message</th>
+          <th>Whatsapp</th>
+          <th>Contact</th>
+          <th>Country</th>
+          <th>Company Names</th>
+          <th>Company Location</th>
+          <th>Position</th>
+          <th>Job Type</th>
+          <th>Status</th>
+          <th>Admin Message</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -23,6 +39,13 @@
           <tr>
             <td><%= app.email %></td>
             <td><%= app.personalDetails.fullName %></td>
+            <td><%= app.personalDetails.whatsapp %></td>
+            <td><%= app.personalDetails.contact %></td>
+            <td><%= app.personalDetails.country %></td>
+            <td><%= app.jobDetails.companyNames %></td>
+            <td><%= app.jobDetails.companyLocation %></td>
+            <td><%= app.jobDetails.position %></td>
+            <td><%= app.jobDetails.jobType %></td>
             <td>
               <form action="/admin/update-application" method="POST">
                 <input type="hidden" name="id" value="<%= app._id %>">
@@ -31,7 +54,11 @@
                   <option value="Applied" <%= app.status === 'Applied' ? 'selected' : '' %>>Applied</option>
                   <option value="Declined" <%= app.status === 'Declined' ? 'selected' : '' %>>Declined</option>
                 </select>
+            </td>
+            <td>
                 <input type="text" name="adminMessage" placeholder="Admin Message" value="<%= app.adminMessage %>">
+            </td>
+            <td>
                 <button type="submit">Update</button>
               </form>
             </td>
