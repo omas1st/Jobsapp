@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <h1>Admin Panel</h1>
+  <a class="logout" href="/admin/logout">Logout</a>
+  <section class="admin-section">
+    <h2>Applications</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Full Name</th>
+          <th>Status &amp; Admin Message</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% applications.forEach(function(app) { %>
+          <tr>
+            <td><%= app.email %></td>
+            <td><%= app.personalDetails.fullName %></td>
+            <td>
+              <form action="/admin/update-application" method="POST">
+                <input type="hidden" name="id" value="<%= app._id %>">
+                <select name="status" required>
+                  <option value="Pending" <%= app.status === 'Pending' ? 'selected' : '' %>>Pending</option>
+                  <option value="Applied" <%= app.status === 'Applied' ? 'selected' : '' %>>Applied</option>
+                  <option value="Declined" <%= app.status === 'Declined' ? 'selected' : '' %>>Declined</option>
+                </select>
+                <input type="text" name="adminMessage" placeholder="Admin Message" value="<%= app.adminMessage %>">
+                <button type="submit">Update</button>
+              </form>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </section>
+</body>
+</html>

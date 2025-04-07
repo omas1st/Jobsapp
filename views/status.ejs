@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Application Status</title>
+  <link rel="stylesheet" href="/css/status.css">
+</head>
+<body>
+  <h1>Application Status</h1>
+  <section class="preview">
+    <h2>Application Preview</h2>
+    <p><strong>Full Name:</strong> <%= application.personalDetails.fullName %></p>
+    <p><strong>Email:</strong> <%= application.personalDetails.email %></p>
+    <p><strong>Contact:</strong> <%= application.personalDetails.contact %></p>
+    <p><strong>Country:</strong> <%= application.personalDetails.country %></p>
+    <p><strong>Company Names:</strong> <%= application.jobDetails.companyNames %></p>
+    <p><strong>Company Location:</strong> <%= application.jobDetails.companyLocation %></p>
+    <p><strong>Position:</strong> <%= application.jobDetails.position %></p>
+    <p><strong>Job Type:</strong> <%= application.jobDetails.jobType %></p>
+  </section>
+
+  <section class="status">
+    <h2>Status: <%= application.status %></h2>
+    <p><%= message %></p>
+  </section>
+
+  <section class="chat">
+    <h2>Need Help?</h2>
+    <button onclick="window.location.href='/chat/whatsapp'">Chat via WhatsApp</button>
+    <button onclick="window.location.href='/chat/email'">Chat via Email</button>
+  </section>
+
+  <section class="navigation">
+    <button onclick="window.location.href='https://intljobs.vercel.app'">Back to Home Page</button>
+    <button onclick="window.location.href='/jobform'">Edit / Apply Jobs</button>
+  </section>
+</body>
+</html>

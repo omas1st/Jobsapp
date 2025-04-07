@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Information</title>
+  <link rel="stylesheet" href="/css/information.css">
+</head>
+<body>
+  <h1>Why Consider Overseas Employment and Apply Through This Platform?</h1>
+  <div class="content">
+    <p><strong>Diverse International Opportunities:</strong> This platform offers South African job seekers access to a comprehensive range of employment opportunities across global markets, tailored to align with professional qualifications and career aspirations.</p>
+    <p><strong>Full Travel Expenditure Coverage:</strong> We manage all associated costs related to international relocation, including flights, accommodation, and ancillary expenses, ensuring a seamless transition to your new role abroad.</p>
+    <p><strong>Flexible Repayment Structure:</strong> Repayment of travel expenses commences only once you begin receiving your overseas salary. A fixed monthly instalment of 10% of your earnings will be deducted until the outstanding balance is settled in full.</p>
+    <p><strong>Streamlined Visa and Passport Assistance:</strong> Our platform facilitates the entire documentation process, including visa and passport applications, eliminating administrative burdens. Access the "Travel Documents" section via your dashboard to initiate this streamlined service.</p>
+    <p><strong>Rapid Application Processing:</strong> Submit your completed employment application below, and our team will expedite the process, ensuring confirmation of your selected role within 24 hours.</p>
+    <p><strong>Next Steps:</strong> To proceed, kindly click the next button below to complete the relevant job application form.</p>
+  </div>
+  <form action="/information" method="POST">
+    <input type="hidden" name="email" value="<%= email %>">
+    <label>
+      <input type="checkbox" name="agree" required> I agree to the terms and conditions.
+    </label>
+    <button type="submit">Next</button>
+  </form>
+</body>
+</html>

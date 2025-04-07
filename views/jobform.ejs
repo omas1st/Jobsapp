@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Job Application Form</title>
+  <link rel="stylesheet" href="/css/jobform.css">
+</head>
+<body>
+  <h1>Job Application Form</h1>
+  <form action="/jobform" method="POST">
+    <fieldset>
+      <legend>Personal Details</legend>
+      <label for="fullName">Full Name:</label>
+      <input type="text" name="fullName" id="fullName" required>
+      
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" value="<%= email %>" required>
+      
+      <label for="whatsapp">Whatsapp Number:</label>
+      <input type="text" name="whatsapp" id="whatsapp" required>
+      
+      <label for="contact">Contact Number:</label>
+      <input type="text" name="contact" id="contact" required>
+      
+      <label for="country">Country:</label>
+      <input type="text" name="country" id="country" required>
+    </fieldset>
+    
+    <fieldset>
+      <legend>Overseas Job Details</legend>
+      <label for="companyNames">Company Names:</label>
+      <input type="text" name="companyNames" id="companyNames" required>
+      
+      <label for="companyLocation">Company Location:</label>
+      <input type="text" name="companyLocation" id="companyLocation" required>
+      
+      <label for="position">Position:</label>
+      <input type="text" name="position" id="position" required>
+      
+      <label for="jobType">Job Type:</label>
+      <input type="text" name="jobType" id="jobType" required>
+    </fieldset>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
