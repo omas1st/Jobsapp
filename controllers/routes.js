@@ -74,7 +74,7 @@ router.post('/jobform', async (req, res) => {
         position: formData.position,
         jobType: formData.jobType,
       },
-      status: 'Pending'
+      status: 'Applied'
     });
     await application.save();
     res.redirect(`/status?email=${req.session.email}`);
