@@ -96,13 +96,13 @@ router.get('/status', async (req, res) => {
     if (application.status === 'Pending') {
       message = "Your application is pending. The management is working on your application. Please check back later (10 minutes to 24 hours).";
     } else if (application.status === 'Applied') {
-      if (application.jobDetails.companyLocation === 'South Africa') {
+      if (application.jobDetails.companyLocation === 'International jobs') {
         message = "Your application is successful, kindly proceed to 'Task' on your dashboard to start your task.";
       } else {
-        message = "Your application is successful, kindly proceed to Travel Documents on your dashboard to prepare your traveling documents.";
+        message = "Your application is successful, Employment letter will be sent to your email/whatsapp within 24 hours, then you can proceed to Travel Documents section on your dashboard to prepare your traveling documents.";
       }
     } else if (application.status === 'Declined') {
-      message = "Your application is declined, kindly reapply for the job or another job.";
+      message = "Your application is declined, kindly reapply for the job or another job, with different email";
     }
     res.render('status', { application, message });
   } catch (error) {
