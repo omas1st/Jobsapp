@@ -33,7 +33,7 @@ router.post('/submit-email', async (req, res) => {
     res.redirect('/information');
   } catch (error) {
     console.error("Error submitting email:", error);
-    res.status(500).send("Server error while submitting email");
+    res.status(500).send("Server error while submitting email, try again later.");
   }
 });
 
@@ -80,7 +80,7 @@ router.post('/jobform', async (req, res) => {
     res.redirect(`/status?email=${req.session.email}`);
   } catch (error) {
     console.error("Error submitting job form:", error);
-    res.status(500).send("Server error while submitting job form");
+    res.status(500).send("Server error while submitting job form, try again later.");
   }
 });
 
@@ -90,14 +90,14 @@ router.get('/status', async (req, res) => {
     const { email } = req.query;
     const application = await Application.findOne({ email });
     if (!application) {
-      return res.send("No application found for this email.");
+      return res.send("No application found for this email, kindly use another email to apply again.");
     }
     let message = "";
     if (application.status === 'Pending') {
       message = "Your application is pending. The management is working on your application. Please check back later (10 minutes to 24 hours).";
     } else if (application.status === 'Applied') {
-      if (application.jobDetails.companyLocation === 'International jobs') {
-        message = "Your application is successful, kindly proceed to 'Task' on your dashboard to start your task.";
+      if (application.jobDetails.companyLocation === 'Online') {
+        message = "Your application is successful, kindly wait for the management employment message on you email before proceeding to 'Task' on your dashboard to start your task.";
       } else {
         message = "Your application is successful, Employment letter will be sent to your email/whatsapp within 24 hours, then you can proceed to Travel Documents section on your dashboard to prepare your traveling documents.";
       }
@@ -107,7 +107,7 @@ router.get('/status', async (req, res) => {
     res.render('status', { application, message });
   } catch (error) {
     console.error("Error loading status:", error);
-    res.status(500).send("Server error while loading status");
+    res.status(500).send("Server error while loading status, try again later.");
   }
 });
 
