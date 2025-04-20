@@ -97,7 +97,7 @@ router.get('/status', async (req, res) => {
       message = "Your application is pending. The management is working on your application. Please check back later (10 minutes to 24 hours).";
     } else if (application.status === 'Applied') {
       if (application.jobDetails.companyLocation === 'Online') {
-        message = "Your application is successful, kindly wait for the management employment message on you email before proceeding to 'Task' on your dashboard to start your task.";
+        message = "Your application is successful, our management will message you for the inverview, and employment letter will be sent to your email/WhatsApp within 24 hours, then you can proceed to 'Task' on your dashboard to start your task.";
       } else {
         message = "Your application is successful, Employment letter will be sent to your email/whatsapp within 24 hours, then you can proceed to Travel Documents section on your dashboard to prepare your traveling documents.";
       }
